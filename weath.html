@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Prediction</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <h1>Weather Prediction</h1>
+    <form id="weatherForm">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required><br><br>
+        <input type="submit" value="Predict Weather">
+    </form>
+
+    <div class="result-container">
+        <div id="result" class="result"></div>
+        <div id="temp" class="result">Temperature: <span id="temp-value"></span> </div>
+        <div id="windspeed" class="result">Windspeed: <span id="windspeed-value"> </span></div>
+        <!-- <div id="result2" class="result2"></div>
+        <div id="temp2" class="result2">Temperature: <span id="temp-value2"></span> </div>
+        <div id="windspeed2" class="result2">Windspeed: <span id="windspeed-value2"> </span></div> -->
+    </div>
+
+    <script>
+        document.getElementById('weatherForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var location = document.getElementById('location').value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:4000', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var result = JSON.parse(xhr.responseText);
+
+               
+                    document.getElementById('result').innerHTML = result.result1.message;
+                    document.getElementById('temp-value').innerText = result.result1.temp;
+                    document.getElementById('windspeed-value').innerText = result.result1.windspeed;
+                   // document.getElementById('result2').innerHTML = result.result2.message;
+                   // document.getElementById('temp-value2').innerText = result.result2.temp;
+                   // document.getElementById('windspeed-value2').innerText = result.result2.windspeed;
+                    console.clear();
+                    console.log("Using RandomForestClassifier")
+                    console.log("Accuracy in prediction is "+result.result1.acc);
+                    console.log("RMSE in temp is "+result.result1.rmse_temp);
+                    console.log("RMSE in windspeed is "+result.result1.rmse_windspeed);
+                    console.log("Using support vector machine (SVM)")
+                    console.log("Accuracy in prediction is "+result.result2.acc);
+                    console.log("RMSE in temp is "+result.result2.rmse_temp);
+                    console.log("RMSE in windspeed is "+result.result2.rmse_windspeed);
+                }
+            };
+
+            var data = {
+                location: location
+            };
+
+            xhr.send(JSON.stringify(data));
+        });
+    </script>
+</body>
+</html>

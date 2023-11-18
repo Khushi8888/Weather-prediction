@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #0078d4; 
+}
+
+#weatherForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    font-weight: bold;
+    color: #333; 
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #0078d4;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3; 
+}
+
+#result {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #0078d4; 
+}
+
+#temp, #windspeed {
+    font-size: 16px;
+    color: #333;
+}
+
+
+.result-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.result {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0078d4;
+    margin: 10px;
+    padding: 10px; 
+}
+#temp, #windspeed {
+    font-size: 16px;
+    color: #0078d4; 
+}
+.result2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0078d4;
+    margin: 10px;
+    padding: 10px; 
+}
+#temp2, #windspeed2 {
+    font-size: 16px;
+    color: #0078d4; 
+}
