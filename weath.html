@@ -3,12 +3,102 @@
 <head>
     <title>Weather Prediction</title>
     <link rel="stylesheet" href="mystyle.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Document</title> -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+
+#weatherForm {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.result-container {
+    margin-top: 20px;
+    text-align: center; 
+}
+
+.result {
+    margin-bottom: 10px;
+}
+
+#temp,
+#windspeed {
+    font-weight: bold;
+}
+
+#temp-value,
+#windspeed-value {
+    color: #4CAF50; 
+    font-weight: bold;
+}
+
+/* Additional style for temperature and windspeed values */
+#temp-value::before,
+#windspeed-value::before {
+    content: '\00B0'; 
+}
+
+#temp-value {
+    color: #ffffff; 
+}
+
+#windspeed-value {
+    color: #1E90FF; 
+}
+
+
+ </style>
+
 </head>
 <body>
-    <h1>Weather Prediction</h1>
+    <div class="search_container">
+        <div class="search_box">
+            <input type="text" id="search-input" placeholder="Enter City">
+            <button id="search-btn" type="submit"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                    viewBox="0 0 1024 1024" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    
+
+    <!-- <h1>Weather Prediction</h1> -->
     <form id="weatherForm">
         <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required><br><br>
+        <input type="text" id="location" name="location" placeholder="loaction" required><br><br>
         <input type="submit" value="Predict Weather">
     </form>
 
@@ -21,6 +111,179 @@
         <div id="windspeed2" class="result2">Windspeed: <span id="windspeed-value2"> </span></div> -->
     </div>
 
+
+
+
+
+
+
+
+
+    <div class="current">
+        <div class="left">
+            <div class="time" id="time">
+                12:30 <span class="am-pm">PM</span>
+            </div>
+            <div class="date-section" id="day_section">
+                <div class="day">Monday,</div>
+                <div class="date">14 Oct 2021</div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="time-zone" id="time-zone">Asia/Kolkata</div>
+            <div class="city" id="city">Karad</div>
+        </div>
+    </div>
+
+    <div class="today-section">
+        <div class="title">Today's details</div>
+        <div class="today">
+            <div class="img-des">
+                
+            </div>
+            <div class="day-night-temp">
+                
+            </div>
+    <div class="sun-moon">
+        <div class="sun">
+            <p>Sunrise</p>
+            <div class="time">
+                <img src="sunrise.png" alt="">
+                <p id="sunrise"> 6:30 <span class="am-pm">PM</span></p>
+            </div>
+            <p>Sunset</p>
+            <div class="time">
+                <img src="sunset.png" alt="">
+                <p id="sunset">6:30 <span class="am-pm">PM</span></p>
+            </div>
+        </div>
+        <div class="moon">
+            <p>Moonrise</p>
+            <div class="time">
+                <img src="moonrise.png" alt="">
+                <p id="moonrise"> 6:30 <span class="am-pm">PM</span></p>
+            </div>
+            <p>Moonset</p>
+            <div class="time">
+                <img src="moonset.png" alt="">
+                <p id="moonset">6:30 <span class="am-pm">PM</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="hourly-forecast-section">
+<div class="title">Hourly Forecast</div>
+<div class="hourly-forecast">
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>           
+</div>
+</div>
+<div class="daily-forecast-section">
+<div class="title">Daily Forecast</div>
+<div class="daily-forecast">
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C 24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C 24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C 24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C 24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C 24°C</div>
+    </div>
+    <div class="card">
+        <div class="time">7 <span>AM</span></div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" srcset="">
+        <div class="temp">24°C 24°C</div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+    
     <script>
         document.getElementById('weatherForm').addEventListener('submit', function (e) {
             e.preventDefault();
@@ -61,5 +324,9 @@
             xhr.send(JSON.stringify(data));
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="script1.js"></script>
 </body>
 </html>
